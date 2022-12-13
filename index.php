@@ -28,7 +28,7 @@
         Palla (let. testicolo, fig. menzogna, sciocchezza, seccatura o noia, es. "Che palle!" ha il significato di "Che noia!"[30])<br>
         Pippa[31], pugnetta, sega[32], raspone[33] (masturbazione maschile)<br>
         Piscia, pisciare (urina, urinare)<br>
-        Porco/porca, (let. maiale, fig. persona con atteggiamenti sessuali ritenuti osceni. Termine usato nelle bestemmie in associazione con elementi sacri)
+        Porco/porca, (let. maiale, fig. persona con atteggiamenti sessuali ritenuti osceni. Termine usato nelle bestemmie in associazione con elementi sacri)<br>
         Sborra, sborrare (sperma, eiaculare)<br>
         Scopare (avere un rapporto sessuale)<br>
         Stronzo (let. massa fecale solida, fig. persona stupida, incosciente o cattiva)<br>
@@ -37,8 +37,15 @@
         Generalmente sono considerate parole volgari anche i derivati delle parolacce e le parole composte che le contengono. Ad esempio così com\'è considerato volgare il termine cazzo sono considerati volgari anche incazzarsi, incazzato, scazzo, cazzeggio[36], ecc.<br>
         <br>
         Nei vocabolari le parolacce sono talvolta riportate aggiungendo accanto l\'abbreviazione volg. (che vuol dire appunto "volgare"), l\'abbreviazione triv. (che vuol dire "triviale") o l\'abbreviazione pop. (che vuol dire popolare).';
-        $censuredWord = str_ireplace($_GET['censuredWord'], '***', $text);
-        $strLenght = strlen($censuredWord);
+        $arrCensuredWord = explode(",", $_GET['censuredWord']);
+        foreach($arrCensuredWord as $word) {
+
+            $text = str_ireplace($word, '***', $text);
+
+        }
+        
+
+        $strLenght = strlen($text);
 
     ?>
     <form method="GET" action="">
@@ -47,10 +54,10 @@
         <button>Censura</button>
     </form>
     <h1><?= $title; ?></h1>
-    <p><?= $censuredWord ?></p>
+    <p><?= $text ?></p>
     <div>
         <h2>Lunghezza paragrafo</h2>
-        <span><?php echo $strLenght ?> caratteri</span>
+        <span><?= $strLenght ?> caratteri</span>
     </div>
 </body>
 </html>
