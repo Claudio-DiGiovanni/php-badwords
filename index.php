@@ -37,9 +37,20 @@
         Generalmente sono considerate parole volgari anche i derivati delle parolacce e le parole composte che le contengono. Ad esempio così com\'è considerato volgare il termine cazzo sono considerati volgari anche incazzarsi, incazzato, scazzo, cazzeggio[36], ecc.<br>
         <br>
         Nei vocabolari le parolacce sono talvolta riportate aggiungendo accanto l\'abbreviazione volg. (che vuol dire appunto "volgare"), l\'abbreviazione triv. (che vuol dire "triviale") o l\'abbreviazione pop. (che vuol dire popolare).';
-    ?>
+        $censuredWord = str_ireplace($_GET['censuredWord'], '***', $text);
+        $strLenght = strlen($censuredWord);
 
+    ?>
+    <form method="GET" action="">
+        <label for="censure">Parola da censurare</label>
+        <input type="text" id="censure" name="censuredWord">
+        <button>Censura</button>
+    </form>
     <h1><?= $title; ?></h1>
-    <p><?= $text ?></p>
+    <p><?= $censuredWord ?></p>
+    <div>
+        <h2>Lunghezza paragrafo</h2>
+        <span><?php echo $strLenght ?> caratteri</span>
+    </div>
 </body>
 </html>
